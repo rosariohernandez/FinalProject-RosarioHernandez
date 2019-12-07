@@ -17,10 +17,7 @@ namespace FinalProject_RosarioHernandez
             string searchkey = "";
             if (Page.IsPostBack)
             {
-                //WARNING: This technique is vulnerable to SQL injections
-                //read more about SQL injections
-                //https://www.csoonline.com/article/3257429/what-is-sql-injection-how-sqli-attacks-work-and-how-to-prevent-them.html
-                //we will learn to defend against these attacks next semester
+               
                 searchkey = searchValue.Text;
             }
 
@@ -48,14 +45,14 @@ namespace FinalProject_RosarioHernandez
             }
 
             //the algorithm needs to call the database method for list query
+
             //passing in the query "select * from recipes;"
 
             //takes the result set as a List<Dictionary<String,String>>
 
             //runs a loop through each item in the result set
 
-
-            //make markup that goes into the interface
+            //need to make markup that goes into the interface
         }
     }
 }

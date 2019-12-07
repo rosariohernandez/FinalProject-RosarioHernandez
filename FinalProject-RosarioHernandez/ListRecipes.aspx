@@ -9,8 +9,8 @@
         <table>
             <thead>
                 <tr>
+                    <th>Recipe Id</th>
                     <th>Recipe Name</th>
-                    <th>Recipe Description</th>
                 </tr>
             </thead>
             <tbody id="recipies" runat="server">

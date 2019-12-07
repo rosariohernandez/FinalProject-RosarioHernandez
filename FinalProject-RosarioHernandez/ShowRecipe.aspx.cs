@@ -7,12 +7,12 @@ using System.Web.UI.WebControls;
 
 namespace FinalProject_RosarioHernandez
 {
-    public partial class ShowRecipe : Page
+    public partial class ShowRecipe : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
             RecipeDB db = new RecipeDB();
-            //showing the base record student information
+           
             ShowRecipeInfo(db);
         }
 

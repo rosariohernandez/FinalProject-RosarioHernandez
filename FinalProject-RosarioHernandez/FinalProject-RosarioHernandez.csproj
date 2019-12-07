@@ -148,6 +148,7 @@
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="EditRecipes.aspx" />
+    <Content Include="AddRecipe.aspx" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="ListRecipes.aspx" />
     <Content Include="Scripts\bootstrap.js" />
@@ -249,9 +250,17 @@
     <Compile Include="EditRecipes.aspx.designer.cs">
       <DependentUpon>EditRecipes.aspx</DependentUpon>
     </Compile>
+    <Compile Include="AddRecipe.aspx.cs">
+      <DependentUpon>AddRecipe.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AddRecipe.aspx.designer.cs">
+      <DependentUpon>AddRecipe.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\data\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

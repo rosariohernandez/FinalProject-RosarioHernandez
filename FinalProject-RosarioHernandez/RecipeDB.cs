@@ -28,9 +28,7 @@ namespace FinalProject_RosarioHernandez
             }
         }
 
-        //need to make a method here which
-        //receives a query string (input)
-        //outputs a list<dictionary<string, string>> output result set
+        
         public List<Dictionary<String, String>> List_Query(string query)
         {
             MySqlConnection Connect = new MySqlConnection(ConnectionString);
@@ -84,41 +82,40 @@ namespace FinalProject_RosarioHernandez
 
         public Recipe FindRecipe(int id)
         {
-            //Utilize the connection string
+            
             MySqlConnection Connect = new MySqlConnection(ConnectionString);
-            //create a "blank" student so that our method can return something if we're not successful catching student data
+            
             Recipe result_recipe = new Recipe();
 
-            //we will try to grab student data from the database, if we fail, a message will appear in Debug>Windows>Output dialogue
+            
             try
             {
-                //Build a custom query with the id information provided
+               
                 string query = "select * from recipe where recipe_id = " + id;
                 Debug.WriteLine("Connection Initialized...");
-                //open the db connection
+              
                 Connect.Open();
-                //Run out query against the database
+                
                 MySqlCommand cmd = new MySqlCommand(query, Connect);
-                //grab the result set
+           
                 MySqlDataReader resultset = cmd.ExecuteReader();
 
-                //Create a list of students (although we're only trying to get 1)
+                
                 List<Recipe> recipes = new List<Recipe>();
 
-                //read through the result set
+             
                 while (resultset.Read())
                 {
-                    //information that will store a single student
+                   
                     Recipe currentrecipe= new Recipe();
 
-                    //Look at each column in the result set row, add both the column name and the column value to our Student dictionary
+                
                     for (int i = 0; i < resultset.FieldCount; i++)
                     {
                         string key = resultset.GetName(i);
                         string value = resultset.GetString(i);
                         Debug.WriteLine("Attempting to transfer " + key + " data of " + value);
-                        //can't just generically put data into a dictionary anymore
-                        //must go through each column one by one to insert data into the right property
+                        
                         switch (key)
                         {
                             case "recipe_id":
@@ -133,17 +130,17 @@ namespace FinalProject_RosarioHernandez
                         }
 
                     }
-                    //Add the student to the list of students
+                   
                     recipes.Add(currentrecipe);
                 }
 
-                result_recipe = recipes[0]; //get the first student
+                result_recipe = recipes[0]; 
 
             }
             catch (Exception ex)
             {
-                //If something (anything) goes wrong with the try{} block, this block will execute
-                Debug.WriteLine("Something went wrong in the find Recipes method!");
+          
+                Debug.WriteLine("Something went wrong in the Find Recipe Method!");
                 Debug.WriteLine(ex.ToString());
             }
 
@@ -153,24 +150,73 @@ namespace FinalProject_RosarioHernandez
             return result_recipe;
         }
 
+        public void AddRecipe(Recipe new_recipe)
+        {
+            
+            string query = "insert into recipe (recipe_id, recipe_name, recipe_description) values ('NULL','{0}','{1}')";
+            query = String.Format(query, new_recipe.GetRecipeId(), new_recipe.GetRecipeName(), new_recipe.GetRecipeDescription());
+
+           
+            MySqlConnection Connect = new MySqlConnection(ConnectionString);
+            MySqlCommand cmd = new MySqlCommand(query, Connect);
+            try
+            {
+                Connect.Open();
+                cmd.ExecuteNonQuery();
+
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("Something went wrong in the Add Recipe Method!");
+                Debug.WriteLine(ex.ToString());
+            }
+
+            Connect.Close();
+        }
+
+        public void EditRecipes(int recipeid, Recipe new_recipe)
+        {
+          
+            string query = "update recipe set recipe_name='{0}', recipe_description='{1}' where recipe_id = " + recipeId;
+            query = String.Format(query, new_recipe.GetRecipeId(), new_recipe.GetRecipeName(), new_recipe.GetRecipeDescription();
+           
+
+            MySqlConnection Connect = new MySqlConnection(ConnectionString);
+            MySqlCommand cmd = new MySqlCommand(query, Connect);
+            try
+            {
+               
+                Connect.Open();
+                cmd.ExecuteNonQuery();
+                Debug.WriteLine("Executed query " + query);
+            }
+            catch (Exception ex)
+            {
+                
+                Debug.WriteLine("Something went wrong in the Update Recipe Method!");
+                Debug.WriteLine(ex.ToString());
+            }
+
+            Connect.Close();
+        }
+
+
         public void DeleteRecipe(int recipeId)
         {
-            //The unenrol student doesn't need to be as careful
-            //we can indiscriminately remove any instance of a student belonging to a particular class
+           
             string query = "delete from recipe where recipe_id = "+recipeId;
             MySqlConnection Connect = new MySqlConnection(ConnectionString);
             MySqlCommand cmd = new MySqlCommand(query, Connect);
             try
             {
-                //try to remove the student from the class
+               
                 Connect.Open();
                 cmd.ExecuteNonQuery();
             }
             catch (Exception ex)
             {
-                //If something (anything) goes wrong with the try{} block, this block will execute
-                //Check debug>windows>output 
-                Debug.WriteLine("Something went wrong in the delete recipe method!");
+                
+                Debug.WriteLine("Something went wrong in the Delete Recipe Method!");
                 Debug.WriteLine(ex.ToString());
             }
             Connect.Close();

@@ -10,25 +10,7 @@
 namespace FinalProject_RosarioHernandez {
     
     
-    public partial class WebForm1 {
-        
-        /// <summary>
-        /// recipe control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl recipe;
-        
-        /// <summary>
-        /// recipeName control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl recipeName;
+    public partial class AddRecipe {
         
         /// <summary>
         /// recipe_name control.

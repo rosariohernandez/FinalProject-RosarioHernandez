@@ -13,6 +13,15 @@ namespace FinalProject_RosarioHernandez {
     public partial class ShowRecipe {
         
         /// <summary>
+        /// recipe control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl recipe;
+        
+        /// <summary>
         /// recipeName control.
         /// </summary>
         /// <remarks>
@@ -22,12 +31,21 @@ namespace FinalProject_RosarioHernandez {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl recipeName;
         
         /// <summary>
-        /// recipeDescription control.
+        /// recipe_name control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl recipeDescription;
+        protected global::System.Web.UI.WebControls.TextBox recipe_name;
+        
+        /// <summary>
+        /// recipe_description control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox recipe_description;
     }
 }

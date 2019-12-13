@@ -12,8 +12,8 @@ namespace FinalProject_RosarioHernandez
         protected void Page_Load(object sender, EventArgs e)
         {
 
-            recipies.InnerHtml = "";
-
+            Recipes.InnerHtml = "";
+            //I had a typo in recipes. It was spelled recipies. I changed it and now List recipes is not working
             string searchkey = "";
             if (Page.IsPostBack)
             {
@@ -33,15 +33,15 @@ namespace FinalProject_RosarioHernandez
             List<Dictionary<String, String>> rs = db.List_Query(query);
             foreach (Dictionary<String, String> row in rs)
             {
-                recipies.InnerHtml += "<tr>";
+                recipes.InnerHtml += "<tr>";
 
                 string recipeid = row["recipe_id"];
-                recipies.InnerHtml += "<td>" + recipeid + "</td>";
+                recipes.InnerHtml += "<td>" + recipeid + "</td>";
 
                 string recipename = row["recipe_name"];
-                recipies.InnerHtml += "<td><a href=\"ShowRecipe.aspx?recipe_id="+recipeid+"\">" + recipename + "</a></td>";
+                recipes.InnerHtml += "<td><a href=\"ShowRecipe.aspx?recipe_id="+recipeid+"\">" + recipename + "</a></td>";
 
-                recipies.InnerHtml += "</tr>";
+                recipes.InnerHtml += "</tr>";
             }
 
             //the algorithm needs to call the database method for list query

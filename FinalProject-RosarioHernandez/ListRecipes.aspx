@@ -1,5 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="ListRecipes.aspx.cs" Inherits="FinalProject_RosarioHernandez.ListRecipes" %>
 
+
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
    
         
@@ -13,7 +14,7 @@
                     <th>Recipe Name</th>
                 </tr>
             </thead>
-            <tbody id="recipies" runat="server">
+            <tbody id="recipes" runat="server">
             </tbody>
         </table>
     </div>

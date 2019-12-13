@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Contact" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="ShowRecipe.aspx.cs" Inherits="FinalProject_RosarioHernandez.ShowRecipe" %>
+﻿<%@ Page Title="EditRecipe" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="ShowRecipe.aspx.cs" Inherits="FinalProject_RosarioHernandez.ShowRecipe" %>
 <asp:Content ID="EditRecipes" ContentPlaceHolderID="MainContent" runat="server">
     <div id="recipe" runat="server">
         <div class="viewnav">

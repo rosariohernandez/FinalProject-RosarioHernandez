@@ -28,7 +28,7 @@ namespace FinalProject_RosarioHernandez
             }
         }
 
-        
+
         public List<Dictionary<String, String>> List_Query(string query)
         {
             MySqlConnection Connect = new MySqlConnection(ConnectionString);
@@ -82,40 +82,40 @@ namespace FinalProject_RosarioHernandez
 
         public Recipe FindRecipe(int id)
         {
-            
+
             MySqlConnection Connect = new MySqlConnection(ConnectionString);
-            
+
             Recipe result_recipe = new Recipe();
 
-            
+
             try
             {
-               
+
                 string query = "select * from recipe where recipe_id = " + id;
                 Debug.WriteLine("Connection Initialized...");
-              
+
                 Connect.Open();
-                
+
                 MySqlCommand cmd = new MySqlCommand(query, Connect);
-           
+
                 MySqlDataReader resultset = cmd.ExecuteReader();
 
-                
+
                 List<Recipe> recipes = new List<Recipe>();
 
-             
+
                 while (resultset.Read())
                 {
-                   
-                    Recipe currentrecipe= new Recipe();
 
-                
+                    Recipe currentrecipe = new Recipe();
+
+
                     for (int i = 0; i < resultset.FieldCount; i++)
                     {
                         string key = resultset.GetName(i);
                         string value = resultset.GetString(i);
                         Debug.WriteLine("Attempting to transfer " + key + " data of " + value);
-                        
+
                         switch (key)
                         {
                             case "recipe_id":
@@ -130,16 +130,16 @@ namespace FinalProject_RosarioHernandez
                         }
 
                     }
-                   
+
                     recipes.Add(currentrecipe);
                 }
 
-                result_recipe = recipes[0]; 
+                result_recipe = recipes[0];
 
             }
             catch (Exception ex)
             {
-          
+
                 Debug.WriteLine("Something went wrong in the Find Recipe Method!");
                 Debug.WriteLine(ex.ToString());
             }
@@ -152,11 +152,11 @@ namespace FinalProject_RosarioHernandez
 
         public void AddRecipe(Recipe new_recipe)
         {
-            
+
             string query = "insert into recipe (recipe_id, recipe_name, recipe_description) values ('NULL','{0}','{1}')";
             query = String.Format(query, new_recipe.GetRecipeId(), new_recipe.GetRecipeName(), new_recipe.GetRecipeDescription());
 
-           
+
             MySqlConnection Connect = new MySqlConnection(ConnectionString);
             MySqlCommand cmd = new MySqlCommand(query, Connect);
             try
@@ -176,28 +176,28 @@ namespace FinalProject_RosarioHernandez
 
         public void EditRecipes(int recipeid, Recipe new_recipe)
         {
-          
-            string query = "update recipe set recipe_name='{0}', recipe_description='{1}' where recipe_id = " + recipeId;
-            query = String.Format(query, new_recipe.GetRecipeId(), new_recipe.GetRecipeName(), new_recipe.GetRecipeDescription();
-           
+
+            string query = "update recipe set recipe_name='{0}', recipe_description='{1}' where recipe_id = " + recipeid;
+            query = String.Format(query, new_recipe.GetRecipeId(), new_recipe.GetRecipeName(), new_recipe.GetRecipeDescription());
+
 
             MySqlConnection Connect = new MySqlConnection(ConnectionString);
             MySqlCommand cmd = new MySqlCommand(query, Connect);
             try
+
             {
-               
-                Connect.Open();
-                cmd.ExecuteNonQuery();
-                Debug.WriteLine("Executed query " + query);
+            Connect.Open();
+            cmd.ExecuteNonQuery();
             }
             catch (Exception ex)
             {
-                
-                Debug.WriteLine("Something went wrong in the Update Recipe Method!");
+
+                Debug.WriteLine("Something went wrong in the Edit Recipe Method!");
                 Debug.WriteLine(ex.ToString());
             }
-
             Connect.Close();
+
+           
         }
 
 

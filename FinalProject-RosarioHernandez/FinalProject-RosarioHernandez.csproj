@@ -260,7 +260,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Content\data\" />
+    <Folder Include="Content\Wireframes\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
